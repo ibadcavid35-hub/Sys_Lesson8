@@ -1,0 +1,15 @@
+﻿using Sys_Lesson8.Dtos.Teacher;
+using Sys_Lesson8.Generics;
+using Sys_Lesson8.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Sys_Lesson8.Repositories.Abstracts;
+
+public interface ITeacherRepository : IGenericRepository<Teacher>
+{
+    Task<List<TeacherWithDepartmentName>> GetAllTeacherWithDepartmentNameAsync();
+}
