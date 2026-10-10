@@ -19,7 +19,7 @@ public class StudentService
 
     public async Task TransactionOperations(Student studentToUpdate, Student studentToAdd)
     {
-        if (studentToUpdate == null) return;
+        if (studentToUpdate == null || studentToAdd == null) return;
         await _uow.BeginTransactionAsync();
 
         try
@@ -28,6 +28,7 @@ public class StudentService
 
             await _uow._repository.AddAsync(studentToAdd);
 
+            await _uow.SaveChangesAsync();
             await _uow.CommitTransactionAsync();
 
             Console.WriteLine("Completed Succesfully");
